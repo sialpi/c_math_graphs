@@ -1,26 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "grid.cpp"
-float parabola(float x, float a, float b, float c)
-{
-    return a*x*x + b*x + c;
-}
-
+#include <math.h>
+#include "grid.h"
 int main(int argc, char **argv)
 {
-    if(argc != 4)
-    {
-        printf("[ERROR] Usa: ./a.out a b c\n");
-        return EXIT_FAILURE;
-    }
-    int a = atoi(argv[1]);
-    int b = atoi(argv[2]);
-    int c = atoi(argv[3]);
 
     int w = 1980;
     int h = w * 9 / 16;
 
-    FILE *f = fopen("parabola.ppm", "wb");
+    FILE *f = fopen("coseno.ppm", "wb");
     fprintf(f, "P6\n%d %d\n255\n", w, h);
 
     int unit = 10;      // 1 unità = 10 pixel
@@ -31,7 +19,7 @@ int main(int argc, char **argv)
     for(int i=0;i<w*h*3;i++) img[i]=0; // sfondo nero
 
     // --- Disegna griglia e assi ---
-    disegna_griglia(w, h, x0, y0, img, unit);
+    disegna_griglia(w, h, x0, y0, img,unit);
 
     // --- Disegna parabola analogica ---
     float prevY = 0;
@@ -39,7 +27,7 @@ int main(int argc, char **argv)
     for(int x=0;x<w;x++)
     {
         float X = (x - x0)/(float)unit;
-        float PYf = y0 - parabola(X, a, b, c)*unit;
+        float PYf = y0 - cos(X)*unit;
 
         if(!first)
         {

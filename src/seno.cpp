@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "grid.cpp"
+#include "grid.h"
 int main(int argc, char **argv)
 {
 
     int w = 1980;
     int h = w * 9 / 16;
 
-    FILE *f = fopen("coseno.ppm", "wb");
+    FILE *f = fopen("seno.ppm", "wb");
     fprintf(f, "P6\n%d %d\n255\n", w, h);
 
     int unit = 10;      // 1 unità = 10 pixel
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     for(int x=0;x<w;x++)
     {
         float X = (x - x0)/(float)unit;
-        float PYf = y0 - cos(X)*unit;
+        float PYf = y0 - sin(X)*unit;
 
         if(!first)
         {
