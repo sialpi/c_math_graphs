@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <grid.cpp>
 float parabola(float x, float a, float b, float c)
 {
     return a*x*x + b*x + c;
@@ -31,25 +31,7 @@ int main(int argc, char **argv)
     for(int i=0;i<w*h*3;i++) img[i]=0; // sfondo nero
 
     // --- Disegna griglia e assi ---
-    for(int y=0;y<h;y++)
-    {
-        for(int x=0;x<w;x++)
-        {
-            unsigned char *p = &img[(y*w+x)*3];
-
-            // griglia fine
-            if (x%unit==0 || y%unit==0)
-                *p = *(p+1) = *(p+2) = 15;
-
-            // griglia principale ogni 100px
-            if (x%(unit*10)==0 || y%(unit*10)==0)
-                *p = *(p+1) = *(p+2) = 40;
-
-            // assi
-            if (x==x0 || y==y0)
-                *p = *(p+1) = *(p+2) = 200;
-        }
-    }
+    disegna_griglia(w, h, x0, y0, img);
 
     // --- Disegna parabola analogica ---
     float prevY = 0;
