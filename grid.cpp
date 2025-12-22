@@ -1,5 +1,5 @@
     // --- Disegna griglia e assi ---
-void draw_grid(int w, int h, int x0, int y0){
+void draw_grid(int w, int h, int x0, int y0,unsigned char *img){
     for(int y=0;y<h;y++)
     {
         for(int x=0;x<w;x++)
