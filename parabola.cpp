@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <grid.cpp>
+#include "grid.cpp"
 float parabola(float x, float a, float b, float c)
 {
     return a*x*x + b*x + c;
