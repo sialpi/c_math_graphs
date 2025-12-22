@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     for(int i=0;i<w*h*3;i++) img[i]=0; // sfondo nero
 
     // --- Disegna griglia e assi ---
-    disegna_griglia(w, h, x0, y0, img);
+    disegna_griglia(w, h, x0, y0, img,unit);
 
     // --- Disegna parabola analogica ---
     float prevY = 0;
